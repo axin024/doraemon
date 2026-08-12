@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도라에몽의 비밀 세상 - Doraemon World</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Gothic A1 / Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;900&family=Jua&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dora-blue': '#009df8',
+                        'dora-darkblue': '#0070c0',
+                        'dora-red': '#ff3b30',
+                        'dora-yellow': '#ffcc00',
+                        'dora-bg': '#eef7ff',
+                    },
+                    fontFamily: {
+                        jua: ['Jua', 'sans-serif'],
+                        gothic: ['Gothic A1', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Gothic A1', sans-serif;
+            background-color: #eef7ff;
+        }
+        .font-jua {
+            font-family: 'Jua', sans-serif;
+        }
+        /* Custom Animations */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2.5s infinite ease-in-out;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+        .pocket-shadow {
+            box-shadow: inset 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+        /* Custom Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-dora-yellow selection:text-black">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-dora-blue shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <!-- Bell Icon Logo -->
+                <div class="w-10 h-10 rounded-full bg-dora-yellow border-2 border-black flex items-center justify-center shadow-inner relative">
+                    <div class="w-3 h-3 bg-black rounded-full"></div>
+                    <div class="w-1.5 h-3 bg-black absolute bottom-1"></div>
+                </div>
+                <span class="text-2xl font-jua text-dora-blue tracking-wide">도라에몽 월드</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-6 font-bold text-gray-700">
+                <a href="#about" class="hover:text-dora-blue transition">프로필</a>
+                <a href="#pocket" class="hover:text-dora-blue transition">4차원 주머니</a>
+                <a href="#gadgets" class="hover:text-dora-blue transition">대표 비밀도구</a>
+                <a href="#friends" class="hover:text-dora-blue transition">친구들</a>
+                <a href="#quiz" class="hover:text-dora-blue transition">도라에몽 퀴즈</a>
+            </div>
+
+            <button onclick="playBellSound()" class="bg-dora-yellow hover:bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded-full border-2 border-black text-sm transition transform active:scale-95 shadow">
+                🔔 방울 소리 듣기
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 md:pt-36 md:pb-24 px-4 bg-gradient-to-b from-blue-100 via-dora-bg to-white relative overflow-hidden">
+        <!-- Floating Decorative Elements -->
+        <div class="absolute top-12 left-10 text-dora-blue opacity-20 text-6xl animate-bounce-slow">✨</div>
+        <div class="absolute bottom-10 right-10 text-dora-yellow opacity-30 text-8xl animate-spin-slow">🌀</div>
+
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+            <!-- Left Text Content -->
+            <div class="flex-1 text-center md:text-left space-y-5">
+                <span class="bg-dora-red text-white font-bold px-4 py-1.5 rounded-full text-sm inline-block shadow">
+                    22세기에서 온 고양이형 로봇
+                </span>
+                <h1 class="text-4xl md:text-6xl font-jua text-gray-900 leading-tight">
+                    안녕하세요! <br/>
+                    저는 <span class="text-dora-blue drop-shadow">도라에몽</span>입니다!
+                </h1>
+                <p class="text-gray-600 text-lg leading-relaxed max-w-lg">
+                    미숙한 진구를 돕기 위해 미래에서 날아온 4차원 주머니의 소유자! 
+                    신기하고 무궁무진한 비밀도구로 가득 찬 도라에몽의 세계에 오신 것을 환영합니다.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+                    <a href="#pocket" class="bg-dora-blue hover:bg-dora-darkblue text-white font-bold px-6 py-3 rounded-full text-lg shadow-lg border-2 border-black transition transform hover:-translate-y-0.5">
+                        🎁 비밀도구 뽑아보기
+                    </a>
+                    <a href="#about" class="bg-white hover:bg-gray-100 text-gray-800 font-bold px-6 py-3 rounded-full text-lg shadow border-2 border-gray-300 transition">
+                        📖 프로필 보기
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Vector Doraemon Avatar Card -->
+            <div class="flex-1 flex justify-center">
+                <div class="relative w-72 h-80 md:w-80 md:h-96 bg-dora-blue rounded-full border-4 border-black p-4 flex flex-col items-center justify-end shadow-2xl animate-bounce-slow">
+                    <!-- Bamboo Copter on Head -->
+                    <div class="absolute -top-7 flex flex-col items-center z-10">
+                        <div class="w-20 h-2 bg-yellow-600 rounded-full animate-spin"></div>
+                        <div class="w-2 h-6 bg-yellow-800"></div>
+                        <div class="w-6 h-3 bg-dora-yellow rounded-t-full border border-black"></div>
+                    </div>
+
+                    <!-- Doraemon Face -->
+                    <div class="w-64 h-64 bg-white rounded-full border-4 border-black relative flex flex-col items-center">
+                        <!-- Eyes -->
+                        <div class="flex gap-1 -mt-6">
+                            <div class="w-12 h-16 bg-white border-3 border-black rounded-full flex items-center justify-end px-1 border-2 border-black shadow-inner">
+                                <div class="w-4 h-4 bg-black rounded-full"></div>
+                            </div>
+                            <div class="w-12 h-16 bg-white border-3 border-black rounded-full flex items-center justify-start px-1 border-2 border-black shadow-inner">
+                                <div class="w-4 h-4 bg-black rounded-full"></div>
+                            </div>
+                        </div>
+                        <!-- Nose -->
+                        <div class="w-8 h-8 bg-dora-red rounded-full border-2 border-black -mt-2 z-10 relative">
+                            <div class="w-2 h-2 bg-white rounded-full absolute top-1 left-1"></div>
+                        </div>
+                        <!-- Nose Line -->
+                        <div class="w-0.5 h-12 bg-black"></div>
+                        <!-- Whiskers -->
+                        <div class="absolute top-16 left-4 space-y-2">
+                            <div class="w-10 h-0.5 bg-black -rotate-6"></div>
+                            <div class="w-10 h-0.5 bg-black"></div>
+                            <div class="w-10 h-0.5 bg-black rotate-6"></div>
+                        </div>
+                        <div class="absolute top-16 right-4 space-y-2">
+                            <div class="w-10 h-0.5 bg-black rotate-6"></div>
+                            <div class="w-10 h-0.5 bg-black"></div>
+                            <div class="w-10 h-0.5 bg-black -rotate-6"></div>
+                        </div>
+                        <!-- Mouth -->
+                        <div class="w-36 h-20 border-b-4 border-black rounded-b-full absolute bottom-6 bg-dora-red overflow-hidden border-t-2 border-t-black">
+                            <!-- Tongue -->
+                            <div class="w-20 h-10 bg-pink-400 rounded-t-full mx-auto mt-12 border border-black"></div>
+                        </div>
+                    </div>
+
+                    <!-- Collar & Bell -->
+                    <div class="w-full h-6 bg-dora-red border-t-4 border-b-4 border-black absolute bottom-12 flex justify-center items-center z-20">
+                        <div class="w-8 h-8 bg-dora-yellow rounded-full border-2 border-black absolute top-1/2 -translate-y-1/2 flex items-center justify-center shadow">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Profile Section -->
+    <section id="about" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-jua text-gray-900 mb-2">도라에몽 프로필</h2>
+            <p class="text-gray-600">숫자 <span class="font-bold text-dora-blue">129.3</span>과 깊은 인연이 있는 특별한 고양이 로봇!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Profile Info Cards -->
+            <div class="glass-card p-6 rounded-2xl border-2 border-blue-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-dora-blue text-2xl mb-4">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <h3 class="text-xl font-jua text-gray-800 mb-2">생일 & 출생지</h3>
+                <p class="text-gray-600"><strong>2112년 9월 3일</strong></p>
+                <p class="text-gray-500 text-sm mt-1">마츠시바 공장에서 제조된 범용 네코가타(고양이형) 자녀양육용 로봇입니다.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border-2 border-yellow-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 text-2xl mb-4">
+                    <i class="fa-solid fa-cookie-bite"></i>
+                </div>
+                <h3 class="text-xl font-jua text-gray-800 mb-2">좋아하는 것</h3>
+                <p class="text-gray-600"><strong>단팥빵 (도라야키)</strong></p>
+                <p class="text-gray-500 text-sm mt-1">단팥빵을 위해서라면 그 어떤 부탁도(가끔은 비밀도구까지) 들어줄 정도로 매우 좋아합니다.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border-2 border-red-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-dora-red text-2xl mb-4">
+                    <i class="fa-solid fa-locust"></i>
+                </div>
+                <h3 class="text-xl font-jua text-gray-800 mb-2">가장 무서워하는 것</h3>
+                <p class="text-gray-600"><strong>쥐 (Mouse)</strong></p>
+                <p class="text-gray-500 text-sm mt-1">낮잠을 자던 중 로봇 쥐가 귀를 갉아먹은 사건 이후로 쥐만 보면 패닉에 빠져 지구파괴 폭탄을 꺼내기도 합니다.</p>
+            </div>
+        </div>
+
+        <!-- Magic 129.3 Numbers Stat Box -->
+        <div class="mt-8 bg-white border-2 border-black rounded-2xl p-6 shadow-md">
+            <h3 class="text-xl font-jua text-center mb-6 text-dora-blue">🔢 도라에몽의 신기한 129.3의 법칙</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                <div class="p-3 bg-blue-50 rounded-xl">
+                    <span class="block text-gray-500 text-xs">신장 (키)</span>
+                    <span class="text-xl font-bold text-dora-blue">129.3 cm</span>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-xl">
+                    <span class="block text-gray-500 text-xs">체중</span>
+                    <span class="text-xl font-bold text-dora-blue">129.3 kg</span>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-xl">
+                    <span class="block text-gray-500 text-xs">최대 파워</span>
+                    <span class="text-xl font-bold text-dora-blue">129.3 마력</span>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-xl">
+                    <span class="block text-gray-500 text-xs">점프력</span>
+                    <span class="text-xl font-bold text-dora-blue">129.3 cm</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive 4D Pocket Section -->
+    <section id="pocket" class="py-16 bg-gradient-to-r from-blue-600 to-dora-blue text-white px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-jua mb-4">4차원 주머니에서 도구 뽑기!</h2>
+            <p class="text-blue-100 mb-8">배에 붙어 있는 4차원 주머니를 클릭하면 어떤 비밀도구가 나올까요?</p>
+
+            <!-- Pocket Display Interactive Component -->
+            <div class="relative inline-block my-4">
+                <!-- White Belly with Pocket -->
+                <div class="w-64 h-48 bg-white rounded-t-full border-4 border-black mx-auto p-4 flex flex-col items-center justify-end shadow-2xl relative overflow-hidden">
+                    <!-- Semi-circle Pocket -->
+                    <button id="draw-btn" onclick="drawRandomGadget()" class="w-48 h-24 bg-white border-4 border-black rounded-b-full pocket-shadow flex flex-col items-center justify-center hover:bg-yellow-50 transition transform active:scale-95 group cursor-pointer">
+                        <span class="text-black font-jua text-lg group-hover:text-dora-blue transition">
+                            🖐️ 터치해서 뽑기
+                        </span>
+                        <span class="text-xs text-gray-400">4D POCKET</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result Box -->
+            <div id="pocket-result" class="mt-8 bg-white text-gray-800 border-4 border-black rounded-2xl p-6 max-w-lg mx-auto shadow-2xl min-h-[160px] flex flex-col items-center justify-center transition">
+                <p class="text-gray-400 font-jua text-lg">주머니를 눌러 비밀도구를 하나 꺼내보세요!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Famous Gadgets Section -->
+    <section id="gadgets" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-jua text-gray-900 mb-2">인기 비밀도구 모음</h2>
+            <p class="text-gray-600">누구나 한 번쯤 꿈꿔본 도라에몽의 대표 아이템들!</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gadget Card 1 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-pink-100 flex items-center justify-center text-pink-500 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-door-open"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2.5 py-1 rounded-full">공간 이동</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">어디로든 문</h3>
+                    <p class="text-gray-600 text-sm mt-2">가고 싶은 장소를 생각하면서 문을 열면 시공간을 넘어 원하는 곳으로 즉시 이동합니다.</p>
+                </div>
+            </div>
+
+            <!-- Gadget Card 2 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-yellow-100 flex items-center justify-center text-yellow-600 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-fan"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2.5 py-1 rounded-full">비행 도구</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">대나무 헬리콥터</h3>
+                    <p class="text-gray-600 text-sm mt-2">머리에 착용하면 시속 80km로 하늘을 자율적으로 자유롭게 날 수 있는 편리한 도구입니다.</p>
+                </div>
+            </div>
+
+            <!-- Gadget Card 3 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-amber-100 flex items-center justify-center text-amber-700 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-bread-slice"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">암기 학습</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">암기빵</h3>
+                    <p class="text-gray-600 text-sm mt-2">외우고 싶은 내용을 빵에 찍어서 먹으면 어떤 복잡한 내용도 완벽하게 암기할 수 있게 됩니다.</p>
+                </div>
+            </div>
+
+            <!-- Gadget Card 4 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-blue-100 flex items-center justify-center text-blue-500 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-blue-100 text-blue-600 text-xs font-bold px-2.5 py-1 rounded-full">시간 여행</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">타임머신</h3>
+                    <p class="text-gray-600 text-sm mt-2">진구의 서랍 속과 연결되어 과거와 미래 어디로든 자유롭게 여행할 수 있는 시공간 보트입니다.</p>
+                </div>
+            </div>
+
+            <!-- Gadget Card 5 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-purple-100 flex items-center justify-center text-purple-600 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-expand"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-purple-100 text-purple-600 text-xs font-bold px-2.5 py-1 rounded-full">크기 변환</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">스몰 라이트 & 빅 라이트</h3>
+                    <p class="text-gray-600 text-sm mt-2">빛을 비추어 물체나 사람의 크기를 아주 작게 축소하거나 거대하게 확대시킵니다.</p>
+                </div>
+            </div>
+
+            <!-- Gadget Card 6 -->
+            <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div class="h-40 bg-emerald-100 flex items-center justify-center text-emerald-600 text-6xl group-hover:scale-110 transition duration-300">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+                <div class="p-5">
+                    <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">언어 통역</span>
+                    <h3 class="text-xl font-jua text-gray-800 mt-2">통역 곤약</h3>
+                    <p class="text-gray-600 text-sm mt-2">이 곤약을 먹으면 우주인, 외계 언어, 동물의 말까지 모두 듣고 이해할 수 있게 됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friends Section -->
+    <section id="friends" class="py-16 bg-white border-t border-gray-200 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-jua text-gray-900 mb-2">도라에몽과 친구들</h2>
+                <p class="text-gray-600">매일매일 다채로운 사건사고를 함께 만드는 등장인물들</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Friend 1: Nobita -->
+                <div class="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-5 text-center shadow-sm">
+                    <div class="w-20 h-20 bg-yellow-400 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl border-2 border-black">
+                        👓
+                    </div>
+                    <h3 class="text-xl font-jua text-gray-800">노진구 (노비타)</h3>
+                    <p class="text-xs text-yellow-800 font-bold mb-2">게으르지만 마음 따뜻한 사격 명수</p>
+                    <p class="text-gray-600 text-sm">공부와 운동은 못하지만 순수함과 뛰어난 사격 실력, 실뜯기 재능을 지닌 주인공.</p>
+                </div>
+
+                <!-- Friend 2: Shizuka -->
+                <div class="bg-pink-50 border-2 border-pink-200 rounded-2xl p-5 text-center shadow-sm">
+                    <div class="w-20 h-20 bg-pink-300 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl border-2 border-black">
+                        🎀
+                    </div>
+                    <h3 class="text-xl font-jua text-gray-800">신이슬 (시즈카)</h3>
+                    <p class="text-xs text-pink-800 font-bold mb-2">상냥하고 영리한 아이돌</p>
+                    <p class="text-gray-600 text-sm">목욕을 좋아하고 바이올린 연주가 취미(실력은 살상급)인 친절한 친구.</p>
+                </div>
+
+                <!-- Friend 3: Suneo -->
+                <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-5 text-center shadow-sm">
+                    <div class="w-20 h-20 bg-green-300 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl border-2 border-black">
+                        🦊
+                    </div>
+                    <h3 class="text-xl font-jua text-gray-800">뼈로롱/비실이 (스네오)</h3>
+                    <p class="text-xs text-green-800 font-bold mb-2">자랑하기 좋아하는 부잣집 도련님</p>
+                    <p class="text-gray-600 text-sm">장난감을 많이 가지고 있으며 퉁퉁이 옆에서 간신 역할을 하지만 프라모델 재능이 뛰어남.</p>
+                </div>
+
+                <!-- Friend 4: Takeshi (Gian) -->
+                <div class="bg-orange-50 border-2 border-orange-200 rounded-2xl p-5 text-center shadow-sm">
+                    <div class="w-20 h-20 bg-orange-400 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl border-2 border-black">
+                        🎤
+                    </div>
+                    <h3 class="text-xl font-jua text-gray-800">퉁퉁이 (자이안)</h3>
+                    <p class="text-xs text-orange-800 font-bold mb-2">골목대장 & 음치 가수</p>
+                    <p class="text-gray-600 text-sm">"네 것도 내 것, 내 것도 내 것!"을 외치지만 극장판에서는 누구보다 든든한 친구.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Mini-Game Section -->
+    <section id="quiz" class="py-16 px-4 max-w-3xl mx-auto">
+        <div class="bg-white border-4 border-black rounded-3xl p-6 md:p-8 shadow-xl">
+            <div class="text-center mb-6">
+                <span class="bg-dora-yellow text-black font-bold px-3 py-1 rounded-full text-xs">QUIZ TIME</span>
+                <h2 class="text-2xl md:text-3xl font-jua text-gray-900 mt-2">도라에몽 상식 퀴즈!</h2>
+                <p class="text-gray-500 text-sm">당신은 도라에몽을 얼마나 잘 알고 있나요?</p>
+            </div>
+
+            <div id="quiz-container">
+                <div id="quiz-question" class="text-lg font-bold text-gray-800 mb-4 bg-blue-50 p-4 rounded-xl border border-blue-200">
+                    질문이 여기에 표시됩니다.
+                </div>
+                <div id="quiz-options" class="space-y-3">
+                    <!-- Option Buttons via JS -->
+                </div>
+            </div>
+
+            <div id="quiz-result" class="hidden text-center py-6">
+                <h3 id="score-text" class="text-3xl font-jua text-dora-blue mb-2"></h3>
+                <p id="score-desc" class="text-gray-600 mb-6"></p>
+                <button onclick="resetQuiz()" class="bg-dora-blue text-white font-bold px-6 py-2.5 rounded-full hover:bg-dora-darkblue transition">
+                    🔄 다시 도전하기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 px-4 text-center text-sm border-t-4 border-dora-yellow">
+        <div class="max-w-5xl mx-auto space-y-3">
+            <p class="font-jua text-xl text-dora-yellow">도라에몽 (Doraemon) Fan Page</p>
+            <p class="text-gray-400">© Fujiko-Pro / Shin-ei / TV-Asahi / ADK</p>
+            <p class="text-gray-500 text-xs">이 페이지는 도라에몽을 사랑하는 팬들을 위한 소개용 웹페이지입니다.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Audio sound synthesis for playful interactive effects
+        function playBellSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1200, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.5);
+                
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.5);
+            } catch(e) {
+                console.log("Audio play non-supported or blocked");
+            }
+        }
+
+        // 4D Pocket Random Gadget Pool
+        const gadgetsPool = [
+            { name: "어디로든 문 🚪", desc: "원하는 곳은 세계 어느 곳이든 순간 이동!", icon: "fa-door-open", color: "text-pink-500" },
+            { name: "대나무 헬리콥터 🚁", desc: "머리에 꽂으면 하늘을 날아갈 수 있어요!", icon: "fa-fan", color: "text-yellow-500" },
+            { name: "암기빵 🍞", desc: "시험 공부 걱정 끝! 먹기만 하면 바로 외워집니다.", icon: "fa-bread-slice", color: "text-amber-600" },
+            { name: "타임머신 ⏳", desc: "서랍을 열고 과거나 미래로 시간 여행을 떠나요!", icon: "fa-clock-rotate-left", color: "text-blue-500" },
+            { name: "스몰 라이트 🔦", desc: "무거운 짐도 인형 크기로 싹 줄여줍니다.", icon: "fa-compress", color: "text-purple-500" },
+            { name: "통역 곤약 🍮", desc: "외국어도, 동물의 말도 다 알아들을 수 있어요!", icon: "fa-language", color: "text-emerald-500" },
+            { name: "빅 라이트 💡", desc: "작은 피규어를 거대하게 키워 탑승해볼까요?", icon: "fa-expand", color: "text-red-500" },
+            { name: "솔직해지는 약 💊", desc: "마음속 비밀을 솔직하게 말하게 만들어 줍니다.", icon: "fa-pills", color: "text-indigo-500" }
+        ];
+
+        function drawRandomGadget() {
+            playBellSound();
+            const btn = document.getElementById('draw-btn');
+            const resultDiv = document.getElementById('pocket-result');
+
+            btn.classList.add('animate-bounce');
+            setTimeout(() => btn.classList.remove('animate-bounce'), 600);
+
+            const randomGadget = gadgetsPool[Math.floor(Math.random() * gadgetsPool.length)];
+
+            resultDiv.innerHTML = `
+                <div class="animate-fade-in flex flex-col items-center">
+                    <i class="fa-solid ${randomGadget.icon} ${randomGadget.color} text-5xl mb-2"></i>
+                    <h3 class="text-2xl font-jua text-gray-900">${randomGadget.name}</h3>
+                    <p class="text-gray-600 text-sm mt-1">${randomGadget.desc}</p>
+                </div>
+            `;
+        }
+
+        // Doraemon Trivia Quiz Logic
+        const quizData = [
+            {
+                q: "도라에몽의 원래 몸 색깔은 무슨 색이었을까요?",
+                options: ["파란색", "노란색", "분홍색", "초록색"],
+                answer: 1
+            },
+            {
+                q: "도라에몽이 가장 싫어하고 두려워하는 동물은?",
+                options: ["바퀴벌레", "개", "쥐", "뱀"],
+                answer: 2
+            },
+            {
+                q: "도라에몽이 가장 좋아해서 먹는 신선한 간식은?",
+                options: ["붕어빵", "단팥빵 (도라야키)", "초코비", "케이크"],
+                answer: 1
+            },
+            {
+                q: "도라에몽의 생일은 언제일까요?",
+                options: ["2112년 9월 3일", "2000년 1월 1일", "2020년 5월 5일", "2100년 12월 25일"],
+                answer: 0
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            const currentQuiz = quizData[currentQuizIndex];
+            document.getElementById('quiz-question').textContent = `Q${currentQuizIndex + 1}. ${currentQuiz.q}`;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            currentQuiz.options.forEach((option, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-gray-50 hover:bg-blue-100 border-2 border-gray-200 p-3 rounded-xl font-bold text-gray-700 transition flex justify-between items-center";
+                btn.innerHTML = `<span>${idx + 1}. ${option}</span> <i class="fa-regular fa-circle"></i>`;
+                btn.onclick = () => selectAnswer(idx);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selectedIdx) {
+            if (selectedIdx === quizData[currentQuizIndex].answer) {
+                score++;
+            }
+
+            currentQuizIndex++;
+
+            if (currentQuizIndex < quizData.length) {
+                loadQuiz();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+
+            const scoreText = document.getElementById('score-text');
+            const scoreDesc = document.getElementById('score-desc');
+
+            scoreText.textContent = `${quizData.length}문제 중 ${score}문제 맞춤!`;
+
+            if (score === quizData.length) {
+                scoreDesc.textContent = "🎉 대단해요! 당신은 진정한 도라에몽 박사입니다!";
+            } else if (score >= 2) {
+                scoreDesc.textContent = "👍 훌륭해요! 도라에몽에 대해 잘 알고 계시네요!";
+            } else {
+                scoreDesc.textContent = "😊 도라에몽 웹페이지를 다시 둘러보고 재도전해 보세요!";
+            }
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadQuiz();
+        }
+
+        // Initialize quiz on load
+        window.onload = function() {
+            loadQuiz();
+        };
+    </script>
+</body>
+</html>
